@@ -2,8 +2,22 @@ import React, { Component } from "react";
 import "../assets/styles/userinput.scss";
 
 class UserInput extends Component {
-  state = {};
+  state = {
+    headline: "",
+    storyLine: "",
+    image: {}
+  };
+
+  /**
+   * Handles event change on the inputs
+   * @param {object} event - Event that occurs on an input
+   * @returns {void}
+   */
+  handleChange = event => {
+    this.setState({ [event.target.name]: event.target.value });
+  };
   render() {
+    const { headline, storyLine } = this.state;
     return (
       <section className="UserInputContainer">
         <form>
@@ -12,9 +26,11 @@ class UserInput extends Component {
               Headline:
               <br />
               <input
+                value={headline}
                 type="text"
-                name="name"
+                name="headline"
                 placeholder="Write your headline here"
+                onChange={this.handleChange}
               />
             </label>
           </div>
@@ -23,9 +39,11 @@ class UserInput extends Component {
               Story Line:
               <br />
               <input
+                value={storyLine}
                 type="text"
-                name="name"
+                name="storyLine"
                 placeholder="Write story line here"
+                onChange={this.handleChange}
               />
             </label>
           </div>

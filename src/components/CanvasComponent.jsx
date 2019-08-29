@@ -1,7 +1,10 @@
-import React from "react";
-import "../assets/styles/canvascomponent.scss";
+import React from 'react';
+import { connect } from 'react-redux';
 
-function CanvasComponent() {
+import '../assets/styles/canvascomponent.scss';
+
+function CanvasComponent({headline, storyline }) {
+
   return (
     <div className="CanvasComponentContainer">
       <div className="Screen">
@@ -13,15 +16,20 @@ function CanvasComponent() {
             <h1>BREAKING NEWS</h1>
           </div>
           <div className="Screen-headline">
-            <h1>HEADLINE</h1>
+            <h1>{headline}</h1>
           </div>
           <div className="Screen-storyline">
-            <h2>Story line</h2>
+            <h2>{storyline}</h2>
           </div>
         </div>
       </div>
     </div>
   );
 }
-
-export default CanvasComponent;
+const mapStateToProps = state => {
+  return {
+    headline: state.appReducer.headline,
+    storyline: state.appReducer.storyline,
+  };
+};
+export default connect(mapStateToProps)(CanvasComponent);

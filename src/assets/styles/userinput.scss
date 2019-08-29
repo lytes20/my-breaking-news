@@ -1,14 +1,14 @@
 .UserInputContainer {
-//   border: 1px solid salmon;
+  border: 1px solid salmon;
 }
 .InputContainer {
   margin-top: 20px;
 }
 input {
+  width: 80%;
   padding: 8px;
   border: 1px solid #282c34;
   border-radius: 4px;
-  display: inline;
 }
 label{
     font-size: 12px;
