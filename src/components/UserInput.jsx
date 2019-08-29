@@ -1,11 +1,15 @@
-import React, { Component } from "react";
-import "../assets/styles/userinput.scss";
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+
+import '../assets/styles/userinput.scss';
+
+import { changeHeadLineAndStoryLine } from '../actions/appActions';
 
 class UserInput extends Component {
   state = {
-    headline: "",
-    storyLine: "",
-    image: {}
+    headline: '',
+    storyLine: '',
+    image: {},
   };
 
   /**
@@ -14,7 +18,10 @@ class UserInput extends Component {
    * @returns {void}
    */
   handleChange = event => {
-    this.setState({ [event.target.name]: event.target.value });
+    const { changeHeadLine } = this.props;
+    this.setState({ [event.target.name]: event.target.value }, () => {
+      changeHeadLine(this.state.headline);
+    });
   };
   render() {
     const { headline, storyLine } = this.state;
@@ -51,11 +58,7 @@ class UserInput extends Component {
             <label>
               Image:
               <br />
-              <input
-                type="file"
-                name="name"
-                placeholder="Write story line here"
-              />
+              <input type="file" name="name" placeholder="Write story line here" />
             </label>
           </div>
 
@@ -66,4 +69,13 @@ class UserInput extends Component {
   }
 }
 
-export default UserInput;
+const mapDispatchToProps = dispatch => {
+  return {
+    changeHeadLine: headline => dispatch(changeHeadLineAndStoryLine(headline)),
+  };
+};
+
+export default connect(
+  null,
+  mapDispatchToProps,
+)(UserInput);

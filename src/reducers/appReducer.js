@@ -1,11 +1,14 @@
 const initialState = {
-    headline: "HEADLINE",
-    storyline: "STORYLINE",
+  headline: 'HEADLINE',
+  storyline: 'STORYLINE',
 };
 const appReducer = (state = initialState, action) => {
   switch (action.type) {
-    case "":
-      return state;
+    case 'HEADLINE_CHANGE':
+      return {
+        ...state,
+        headline: action.payload,
+      };
     default:
       return state;
   }

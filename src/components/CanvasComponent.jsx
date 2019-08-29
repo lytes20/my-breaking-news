@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import '../assets/styles/canvascomponent.scss';
 
 function CanvasComponent({headline, storyline }) {
-
   return (
     <div className="CanvasComponentContainer">
       <div className="Screen">
